@@ -1,0 +1,47 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../views/**/*.blade.php';
+
+@theme {
+    --font-sans: 'Plus Jakarta Sans', 'Instrument Sans', ui-sans-serif, system-ui, sans-serif;
+    --color-carbon-950: #06090e;
+    --color-carbon-900: #0a0e17;
+    --color-carbon-850: #0f1523;
+    --color-carbon-800: #141c2e;
+    --color-carbon-700: #1e293b;
+    --color-carbon-600: #334155;
+    --color-electric-600: #0284c7;
+    --color-electric-500: #0ea5e9;
+    --color-electric-400: #38bdf8;
+    --color-electric-300: #7dd3fc;
+}
+
+@layer utilities {
+    .glass-card {
+        background: rgba(15, 21, 35, 0.75);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .glass-card-hover {
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .glass-card-hover:hover {
+        background: rgba(20, 28, 46, 0.88);
+        border-color: rgba(56, 189, 248, 0.35);
+        transform: translateY(-4px);
+        box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.6), 0 0 25px -5px rgba(14, 165, 233, 0.15);
+    }
+    .text-gradient {
+        background: linear-gradient(135deg, #ffffff 30%, #94a3b8 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    .text-gradient-electric {
+        background: linear-gradient(135deg, #38bdf8 0%, #0ea5e9 50%, #6366f1 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+}
