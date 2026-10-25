@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\WelcomeCustomerMail;
 use App\Models\ActivityLog;
 use App\Models\User;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\View\View;
 
@@ -84,6 +88,17 @@ class AuthController extends Controller
         $request->session()->regenerate();
 
         ActivityLog::log('USER_REGISTER', "Customer account created for {$user->email}.", null, $user);
+
+        event(new Registered($user));
+
+        try {
+            Mail::to($user->email)->send(new WelcomeCustomerMail($user));
+        } catch (\Throwable $e) {
+            Log::error('Failed to send welcome email to customer: '.$e->getMessage(), [
+                'user_id' => $user->id,
+                'email' => $user->email,
+            ]);
+        }
 
         return redirect()->route('customer.dashboard')->with('success', 'Your account has been created successfully!');
     }

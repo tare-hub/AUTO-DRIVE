@@ -11,6 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
 
     <!-- Vite Styles and Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -24,13 +25,8 @@
 
     <!-- Mobile Top Navigation Header -->
     <div class="md:hidden flex items-center justify-between p-4 bg-carbon-900 border-b border-white/10 sticky top-0 z-40">
-        <a href="{{ route('home') }}" class="flex items-center gap-2">
-            <div class="w-8 h-8 rounded-lg bg-electric-500 flex items-center justify-center text-white">
-                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                </svg>
-            </div>
-            <span class="font-display font-bold text-lg text-white">AUTO<span class="text-electric-400">DRIVE</span></span>
+        <a href="{{ route('home') }}" class="flex items-center">
+            <x-application-logo variant="electric" class="h-8 w-auto object-contain" />
         </a>
         <button type="button" onclick="document.getElementById('dashboard-sidebar').classList.toggle('-translate-x-full')" class="p-2 text-slate-400 hover:text-white">
             <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -44,16 +40,8 @@
         <div class="p-5 flex flex-col gap-6 overflow-y-auto">
             <!-- Brand -->
             <div class="flex items-center justify-between">
-                <a href="{{ route('home') }}" class="flex items-center gap-2.5">
-                    <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-electric-500 to-indigo-600 flex items-center justify-center text-white shadow-lg shadow-electric-500/20">
-                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                        </svg>
-                    </div>
-                    <div>
-                        <span class="font-display font-bold text-lg text-white">AUTO<span class="text-electric-400">DRIVE</span></span>
-                        <span class="text-[9px] tracking-widest uppercase text-slate-400 block -mt-1 font-semibold">Management</span>
-                    </div>
+                <a href="{{ route('home') }}" class="flex items-center">
+                    <x-application-logo variant="electric" class="h-9 w-auto object-contain" />
                 </a>
                 <button type="button" onclick="document.getElementById('dashboard-sidebar').classList.add('-translate-x-full')" class="md:hidden text-slate-400 hover:text-white p-1">
                     <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -202,15 +190,7 @@
                 <p class="text-xs text-slate-400">@yield('page_subtitle', 'AutoDrive Management Console')</p>
             </div>
 
-            <!-- Demo Persona Bar -->
-            <div class="hidden lg:flex items-center gap-1.5 text-xs">
-                <span class="text-slate-400 mr-1">Switch:</span>
-                <a href="{{ route('demo.login', 'admin') }}" class="px-2 py-1 rounded bg-purple-950/80 hover:bg-purple-800 text-purple-200 border border-purple-700/50 transition">Admin</a>
-                <a href="{{ route('demo.login', 'rental') }}" class="px-2 py-1 rounded bg-blue-950/80 hover:bg-blue-800 text-blue-200 border border-blue-700/50 transition">Rental</a>
-                <a href="{{ route('demo.login', 'sales') }}" class="px-2 py-1 rounded bg-amber-950/80 hover:bg-amber-800 text-amber-200 border border-amber-700/50 transition">Sales</a>
-                <a href="{{ route('demo.login', 'support') }}" class="px-2 py-1 rounded bg-teal-950/80 hover:bg-teal-800 text-teal-200 border border-teal-700/50 transition">Support</a>
-                <a href="{{ route('demo.login', 'customer') }}" class="px-2 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-600 transition">Customer</a>
-            </div>
+
         </header>
 
         <!-- Flash Messages -->

@@ -43,13 +43,8 @@
         <!-- Receipt Header -->
         <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-6">
             <div>
-                <div class="flex items-center gap-2 mb-2">
-                    <div class="w-8 h-8 rounded-lg bg-electric-500 flex items-center justify-center text-white">
-                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                        </svg>
-                    </div>
-                    <span class="font-display text-xl font-bold text-white tracking-tight">AUTO<span class="text-electric-400">DRIVE</span></span>
+                <div class="flex items-center mb-2">
+                    <x-application-logo variant="electric" class="h-8 w-auto object-contain" />
                 </div>
                 <p class="text-xs text-slate-400 leading-relaxed">
                     AutoDrive International Inc.<br>

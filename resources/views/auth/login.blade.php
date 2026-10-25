@@ -21,21 +21,25 @@
             <span class="text-slate-400">1-Click Role Switch</span>
         </div>
         <div class="grid grid-cols-2 gap-2 text-xs">
-            <a href="{{ route('demo.login', 'admin') }}" class="p-2 rounded-xl bg-purple-950/60 hover:bg-purple-900 border border-purple-700/50 text-purple-200 text-center font-medium transition">
-                Admin Console
+            <a href="{{ route('demo.login', 'admin') }}" class="p-2.5 rounded-xl bg-purple-950/60 hover:bg-purple-900 border border-purple-700/50 text-purple-200 text-center font-medium transition">
+                <span class="block font-bold">Admin Console</span>
+                <span class="text-[10px] text-purple-300/80">Tariku Meseret</span>
             </a>
-            <a href="{{ route('demo.login', 'rental') }}" class="p-2 rounded-xl bg-blue-950/60 hover:bg-blue-900 border border-blue-700/50 text-blue-200 text-center font-medium transition">
-                Rental Manager
+            <a href="{{ route('demo.login', 'rental') }}" class="p-2.5 rounded-xl bg-blue-950/60 hover:bg-blue-900 border border-blue-700/50 text-blue-200 text-center font-medium transition">
+                <span class="block font-bold">Rental Admin</span>
+                <span class="text-[10px] text-blue-300/80">Merawi Ayele</span>
             </a>
-            <a href="{{ route('demo.login', 'sales') }}" class="p-2 rounded-xl bg-amber-950/60 hover:bg-amber-900 border border-amber-700/50 text-amber-200 text-center font-medium transition">
-                Sales Manager
+            <a href="{{ route('demo.login', 'sales') }}" class="p-2.5 rounded-xl bg-amber-950/60 hover:bg-amber-900 border border-amber-700/50 text-amber-200 text-center font-medium transition">
+                <span class="block font-bold">Sales Manager</span>
+                <span class="text-[10px] text-amber-300/80">Fitsum Gashaw</span>
             </a>
-            <a href="{{ route('demo.login', 'support') }}" class="p-2 rounded-xl bg-teal-950/60 hover:bg-teal-900 border border-teal-700/50 text-teal-200 text-center font-medium transition">
-                Customer Support
+            <a href="{{ route('demo.login', 'support') }}" class="p-2.5 rounded-xl bg-teal-950/60 hover:bg-teal-900 border border-teal-700/50 text-teal-200 text-center font-medium transition">
+                <span class="block font-bold">Customer Support</span>
+                <span class="text-[10px] text-teal-300/80">Yosef Habtamu</span>
             </a>
         </div>
-        <a href="{{ route('demo.login', 'customer') }}" class="block w-full p-2 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-600 text-slate-200 text-center text-xs font-medium transition">
-            Customer Persona (Jonathan Reynolds)
+        <a href="{{ route('demo.login', 'customer') }}" class="block w-full p-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-600 text-slate-200 text-center text-xs font-medium transition">
+            Customer Persona: <span class="font-bold text-white">Kassaw Getahun</span>
         </a>
     </div>
 

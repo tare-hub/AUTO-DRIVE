@@ -3,12 +3,15 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Mail\WelcomeCustomerMail;
 use App\Models\ActivityLog;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\View\View;
 
@@ -68,6 +71,17 @@ class UserController extends Controller
         ]);
 
         ActivityLog::log('USER_CREATED', "New user {$user->name} ({$user->email}) created with role {$user->role}.", $user, Auth::user());
+
+        if ($user->role === User::ROLE_CUSTOMER) {
+            try {
+                Mail::to($user->email)->send(new WelcomeCustomerMail($user));
+            } catch (\Throwable $e) {
+                Log::error('Failed to send welcome email to customer: '.$e->getMessage(), [
+                    'user_id' => $user->id,
+                    'email' => $user->email,
+                ]);
+            }
+        }
 
         return redirect()->route('admin.users.index')->with('success', "User {$user->name} created successfully.");
     }

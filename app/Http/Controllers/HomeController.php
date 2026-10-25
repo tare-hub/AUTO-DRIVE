@@ -32,9 +32,23 @@ class HomeController extends Controller
             ->where('is_active', true)
             ->get();
 
-        $brands = Vehicle::select('brand')->distinct()->orderBy('brand')->pluck('brand');
+        $featuredVehicles = Vehicle::with('category')
+            ->where('is_featured', true)
+            ->where('status', 'available')
+            ->orderByRaw("CASE 
+                WHEN brand = 'Mercedes-Benz' AND model = 'AMG GT' THEN 1
+                WHEN brand = 'BMW' AND model = '5 Series' THEN 2
+                WHEN brand = 'Porsche' AND model = '911 Carrera' THEN 3
+                WHEN brand = 'Land Rover' AND model = 'Range Rover Sport' THEN 4
+                WHEN brand = 'Toyota' AND model = 'Land Cruiser' THEN 5
+                ELSE 6 END")
+            ->take(8)
+            ->get();
 
-        return view('home', compact('featuredRentals', 'featuredSales', 'categories', 'brands'));
+        $brands = Vehicle::select('brand')->distinct()->orderBy('brand')->pluck('brand');
+        $models = Vehicle::select('model')->distinct()->orderBy('model')->pluck('model');
+
+        return view('home', compact('featuredRentals', 'featuredSales', 'featuredVehicles', 'categories', 'brands', 'models'));
     }
 
     public function about(): View

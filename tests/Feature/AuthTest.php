@@ -2,9 +2,11 @@
 
 namespace Tests\Feature;
 
+use App\Mail\WelcomeCustomerMail;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Tests\TestCase;
 
 class AuthTest extends TestCase
@@ -13,6 +15,8 @@ class AuthTest extends TestCase
 
     public function test_customer_can_register_successfully(): void
     {
+        Mail::fake();
+
         $response = $this->post(route('register'), [
             'name' => 'John Carter',
             'email' => 'john@example.com',
@@ -30,6 +34,12 @@ class AuthTest extends TestCase
             'role' => User::ROLE_CUSTOMER,
             'driver_license_number' => 'DL-987654',
         ]);
+
+        Mail::assertSent(WelcomeCustomerMail::class, function (WelcomeCustomerMail $mail) {
+            return $mail->hasTo('john@example.com')
+                && $mail->user->name === 'John Carter'
+                && $mail->user->email === 'john@example.com';
+        });
     }
 
     public function test_user_can_login_with_correct_credentials(): void

@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder
         $password = Hash::make('password');
 
         $admin = User::create([
-            'name' => 'Alexander Vance',
+            'name' => 'Tariku Meseret',
             'email' => 'admin@autodrive.com',
             'password' => $password,
             'role' => 'admin',
@@ -39,8 +39,19 @@ class DatabaseSeeder extends Seeder
             'driver_license_number' => 'DL-ADM-99482',
         ]);
 
+        $admin2 = User::create([
+            'name' => 'Tewodros Kassahun',
+            'email' => 'tewodros.admin@autodrive.com',
+            'password' => $password,
+            'role' => 'admin',
+            'phone' => '+1 (555) 019-7721',
+            'address' => '100 Ocean Drive, Suite 502, Miami, FL',
+            'status' => 'active',
+            'driver_license_number' => 'DL-ADM-88391',
+        ]);
+
         $rentalManager = User::create([
-            'name' => 'Marcus Sterling',
+            'name' => 'Merawi Ayele',
             'email' => 'rental@autodrive.com',
             'password' => $password,
             'role' => 'rental_manager',
@@ -50,8 +61,19 @@ class DatabaseSeeder extends Seeder
             'driver_license_number' => 'DL-RNT-48192',
         ]);
 
+        $rentalManager2 = User::create([
+            'name' => 'Bereket Tadesse',
+            'email' => 'bereket.rental@autodrive.com',
+            'password' => $password,
+            'role' => 'rental_manager',
+            'phone' => '+1 (555) 018-4493',
+            'address' => '245 Brickell Ave, Miami, FL',
+            'status' => 'active',
+            'driver_license_number' => 'DL-RNT-59281',
+        ]);
+
         $salesManager = User::create([
-            'name' => 'Elena Rostova',
+            'name' => 'Fitsum Gashaw',
             'email' => 'sales@autodrive.com',
             'password' => $password,
             'role' => 'sales_manager',
@@ -62,7 +84,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $supportAgent = User::create([
-            'name' => 'David Chen',
+            'name' => 'Yosef Habtamu',
             'email' => 'support@autodrive.com',
             'password' => $password,
             'role' => 'customer_support',
@@ -73,7 +95,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $customer1 = User::create([
-            'name' => 'Jonathan Reynolds',
+            'name' => 'Kassaw Getahun',
             'email' => 'customer@autodrive.com',
             'password' => $password,
             'role' => 'customer',
@@ -84,7 +106,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $customer2 = User::create([
-            'name' => 'Sophia Montgomery',
+            'name' => 'Bisrat Getachew',
             'email' => 'sophia@example.com',
             'password' => $password,
             'role' => 'customer',
@@ -622,7 +644,7 @@ class DatabaseSeeder extends Seeder
         SupportMessage::create([
             'support_ticket_id' => $ticket1->id,
             'user_id' => $supportAgent->id,
-            'message' => 'Greetings Mr. Reynolds. Yes, our white-glove team provides tarmac delivery at KTMB FBOs (Signature and Reliance). Our concierge driver will meet your flight with the vehicle pre-conditioned.',
+            'message' => 'Greetings Ato Kassaw. Yes, our white-glove team provides tarmac delivery at KTMB FBOs (Signature and Reliance). Our concierge driver will meet your flight with the vehicle pre-conditioned.',
             'is_staff' => true,
             'created_at' => Carbon::now()->subHours(12),
         ]);
